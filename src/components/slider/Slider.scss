@@ -1,0 +1,11 @@
+.slider-line {
+  position: absolute;
+  transition: all .35s ease-in-out;
+  border-bottom: 1px solid var(--slider-line-color);
+
+  &-background {
+    position: relative;
+    top: 1px;
+    border-bottom: 1px solid var(--slider-line-bg-color);
+  }
+}

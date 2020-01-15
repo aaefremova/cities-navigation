@@ -1,0 +1,35 @@
+.navigation-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: 800px) {
+    & {
+      justify-content: space-between;
+    }
+  }
+
+  .navigation-item {
+    color: var(--navigation-item-default-color);
+    font-size: 13px;
+    font-weight: 300;
+  
+    &:hover {
+      color: var(--navigation-item-hover-color);
+      cursor: pointer;
+    }
+  
+    &.active {
+      color: var(--navigation-item-active-color);
+    }
+
+    @media screen and (min-width: 800px) {
+      &:not(:last-child) {
+        margin-right: 60px;
+      }
+    }
+  }
+}
