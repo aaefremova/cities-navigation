@@ -5,15 +5,15 @@ import Slider from '../slider/Slider';
 import Cities from '../cities/Cities';
 
 function CitiesNavigation() {
-  const [activeItem, setActiveItem] = useState(null);
+    const [activeItem, setActiveItem] = useState(null);
 
-  return (
-    <div>
-      <Cities activeItem={activeItem} setActiveItem={setActiveItem} />
-      <Slider activeItem={activeItem} />
-      <CurrentTime activeItem={activeItem} />
-    </div>
-  );
+    return (
+        <div>
+            <Cities activeItem={activeItem} setActiveItem={setActiveItem} />
+            <Slider activeItem={activeItem} />
+            <CurrentTime activeItem={activeItem} />
+        </div>
+    );
 }
 
 export default CitiesNavigation;

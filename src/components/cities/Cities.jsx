@@ -1,40 +1,46 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './Cities.scss';
 import { fetchCities } from '../../services/cities.service';
+import PropTypes from 'prop-types';
 
 function Cities({ activeItem, setActiveItem }) {
-  const [cities, setCities] = useState([]);
+    const [cities, setCities] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchCities();
-      setCities(result);
-    }
-    fetchData();
-  }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await fetchCities();
+            setCities(result);
+        };
+        fetchData();
+    }, []);
 
-  const itemClickCallback = useCallback((event, item) => {
-    setActiveItem({ ...item, target: event.target });
-  }, [setActiveItem]);
+    const itemClickCallback = useCallback((event, item) => {
+        setActiveItem({ ...item, target: event.target });
+    }, [setActiveItem]);
 
-  const isActive = (item) => {
-    return activeItem && activeItem.section === item.section;
-  };
+    const isActive = (item) => {
+        return activeItem && activeItem.section === item.section;
+    };
 
-  return (
-      <ul className="navigation-container">
-        {cities.map(item => {
-          const className = `navigation-item ${isActive(item) ? 'active' : ''}`
-          return (
-            <li key={item.section}
-              className={className}
-              onClick={(event) => itemClickCallback(event, item)}>
-              {item.label}
-            </li>
-          )
-        })}
-      </ul>
-  );
+    return (
+        <ul className="navigation-container">
+            {cities.map(item => {
+                const className = `navigation-item ${isActive(item) ? 'active' : ''}`;
+                return (
+                    <li key={item.section}
+                        className={className}
+                        onClick={(event) => itemClickCallback(event, item)}>
+                        {item.label}
+                    </li>
+                );
+            })}
+        </ul>
+    );
 }
+
+Cities.propTypes = {
+    activeItem: PropTypes.object,
+    setActiveItem: PropTypes.func
+};
 
 export default Cities;
